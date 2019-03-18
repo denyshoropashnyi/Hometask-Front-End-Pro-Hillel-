@@ -3,17 +3,17 @@
 function inputNumber() {
     let userNumber = prompt('Please input number.', 'type your number');
 
-    if (validateUserNumber(userNumber)) {
+    if (isUserNumberWrong(userNumber)) {
         alert('You input invalid data. Please input number.');
-        inputNumber(userNumber);
-    } else {
-        return Number(userNumber);
-    };
+        return inputNumber();
+    } else return userNumber;
 };
 
-function validateUserNumber(value) {
+
+function isUserNumberWrong(value) {
     return value === null || value === '' || isNaN(value);
 };
+
 
 function countEvenNumbers(value) {
     let userData = String(value), count = 0;
