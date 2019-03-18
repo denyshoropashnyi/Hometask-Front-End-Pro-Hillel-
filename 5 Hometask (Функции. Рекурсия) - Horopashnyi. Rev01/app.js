@@ -5,10 +5,8 @@ function inputOperand() {
 
     if (validateUserNumber(operand)) {
         alert('You input invalid data. Please input number.');
-        inputOperand(operand);
-    } else {
-        return Number(operand);
-    }
+        return inputOperand();
+    } else return Number(operand);
 };
 
 function inputOperator() {
@@ -56,4 +54,3 @@ function calculate(firstNum, operator, secondNum) {
 };
 
 alert(calculate(inputOperand(), inputOperator(), inputOperand()));
-
