@@ -1,24 +1,21 @@
 'use strict';
 
 const obj = {
-    name: 'Alex', age: 33, adress: {
-        country: 'UA', city: 'Dnipro'
-    }
+    name: 'Alex', age: 33, adress: { country: 'UA', city: 'Dnipro' }
 };
 
 
 function copyObject(originObject) {
-    let cloneObject = {};
+    let copyOfAnObject = Array.isArray(originObject) ? [] : {};
 
     for (let key in originObject) {
         if (originObject[key] != null && typeof (originObject[key]) == 'object') {
-            cloneObject[key] = copyObject(originObject[key]);
+            copyOfAnObject[key] = copyObject(originObject[key])
         } else {
-            cloneObject[key] = originObject[key];
-        };
+            copyOfAnObject[key] = originObject[key]
+        }
     };
-
-    return cloneObject;
+    return copyOfAnObject;
 };
 
 
