@@ -3,7 +3,7 @@
 function inputOperand() {
     let operand = prompt('Please input operand', 'input your value.');
 
-    if (isUserNumberWrong(operand)) {
+    if (isUserNumberInvalid(operand)) {
         alert('You input invalid data. Please input number.');
         return inputOperand();
     } else return Number(operand);
@@ -20,7 +20,7 @@ function inputOperator() {
     };
 };
 
-function isUserNumberWrong(value) {
+function isUserNumberInvalid(value) {
     return value === null || value === '' || isNaN(value);
 };
 

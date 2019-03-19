@@ -3,14 +3,14 @@
 function inputNumber() {
     let userNumber = prompt('Please input number.', 'type your number');
 
-    if (isUserNumberWrong(userNumber)) {
+    if (isUserNumberInvalid(userNumber)) {
         alert('You input invalid data. Please input number.');
         return inputNumber();
     } else return userNumber;
 };
 
 
-function isUserNumberWrong(value) {
+function isUserNumberInvalid(value) {
     return value === null || value === '' || isNaN(value);
 };
 
