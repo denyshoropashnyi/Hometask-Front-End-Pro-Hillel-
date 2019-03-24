@@ -56,10 +56,8 @@ userUl.classList.add('user-list');
 
 document.body.appendChild(userUl);
 
-const userLi = document.createElement('li');
-
 for (let i = 0; i < Math.round(userNumber); i++) {
-    const userLi = document.createElement('li');
+    let userLi = document.createElement('li');
     userUl.appendChild(userLi);
     userLi.textContent = (indexNumber[i]);
 };
