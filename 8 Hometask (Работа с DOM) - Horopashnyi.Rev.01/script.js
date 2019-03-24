@@ -1,19 +1,19 @@
 'use strict';
 
-function isUserMissedInputName(value) {
+function isUserNameInvalid(value) {
     return value === '' || value === null || !isNaN(value);
 };
 
 function getUserName() {
     let name = prompt('Please enter your name.', '');
 
-    if (isUserMissedInputName(name)) {
+    if (isUserNameInvalid(name)) {
         alert('You did not introduce yourself. Please try again.');
         return getUserName();
     } else return name;
 };
 
-const userName = getUserName(isUserMissedInputName());
+const userName = getUserName();
 
 
 const welcomeHeader = document.querySelector('h1');
@@ -21,14 +21,14 @@ welcomeHeader.classList.add('header-welcome');
 welcomeHeader.textContent = 'Hello, ' + userName + '!';
 
 
-function isUserInputInvalidNumber(value) {
+function isUserNumberInvalid(value) {
     return value === '' || value === null || isNaN(value) || value <= 0 || value >= 100;
 };
 
 function getUserNumber() {
     let number = prompt('Please enter number in the range of 0 till 100.', '');
 
-    if (isUserInputInvalidNumber(number)) {
+    if (isUserNumberInvalid(number)) {
         alert('You input invalid number. Please try again.');
         return getUserNumber();
     } else return number;
@@ -48,7 +48,7 @@ const indexNumber = [
     'ninety first', 'ninety second', 'ninety third', 'ninety fourth', 'ninety fifth', 'ninety sixth', 'ninety seventh', 'ninety eighth', 'ninety ninth', 'fiftieth',
 ];
 
-const userNumber = getUserNumber(isUserInputInvalidNumber());
+const userNumber = getUserNumber();
 
 const userUl = document.createElement('ul');
 
