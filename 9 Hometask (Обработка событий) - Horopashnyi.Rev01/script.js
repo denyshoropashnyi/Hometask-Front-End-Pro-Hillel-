@@ -1,29 +1,32 @@
 'use strict';
 
+const formatButton = document.querySelector('button');
+
 const list = document.querySelector('ol');
 
-function formatList() {
-    const newLi = document.createElement('li');
+
+formatButton.addEventListener('click', addNewLi);
+
+list.addEventListener('click', toggleBackgroundColor);
+
+list.addEventListener('click', removeLi);
+
+
+function addNewLi() {
+    let newLi = document.createElement('li');
     newLi.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.';
-    list.appendChild(newLi)
-        .style.border = '1px dotted gray';
+    newLi.style.border = '1px dotted gray';
 
-    newLi.addEventListener('click', onFormatButtonClick);
-    newLi.addEventListener('click', function (event) {
-        if (event.altKey) {
-            this.parentNode.removeChild(newLi);
-        }
-    })
+    list.appendChild(newLi);
 };
-
-const formatButton = document.querySelector('button')
-    .addEventListener('click', formatList);
 
 function toggleBackgroundColor(element) {
-    element.style.background =
-        element.style.background === 'red' ? 'yellow' : 'red';
+    if (element.target.tagName === 'LI')
+        element.target.style.background =
+            element.target.style.background === 'red' ? 'yellow' : 'red';
 };
 
-function onFormatButtonClick(event) {
-    toggleBackgroundColor(event.target);
+function removeLi(element) {
+    if (element.target.tagName === 'LI')
+        if (element.altKey) element.target.remove();
 };
