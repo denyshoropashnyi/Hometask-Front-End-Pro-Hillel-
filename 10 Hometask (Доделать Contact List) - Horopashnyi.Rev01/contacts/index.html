@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="../common/css/normalize.css">
+    <link rel="stylesheet" href="../common/css/skeleton.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" async></script>
+</head>
+<body>
+    <table class="u-full-width">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody id="contactsList"></tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <input type="text" id="nameInput">
+                </td>
+                <td>
+                    <input type="text" id="phoneInput">
+                </td>
+                <td>
+                    <input type="number" id="ageInput">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="table-footer">
+                    <button id="addContactBtn">Add Contact</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <script type="text/template" id="contactTemplate">
+        <td>{{name}}</td>
+        <td>{{phone}}</td>
+        <td>{{age}}</td>
+    </script>
+</body>
+</html>
