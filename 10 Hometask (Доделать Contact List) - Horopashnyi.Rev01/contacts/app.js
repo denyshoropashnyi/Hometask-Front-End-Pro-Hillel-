@@ -22,11 +22,6 @@ function ondelContactBtnClick() {
 }
 
 function deleteContact() {
-    let deleteBtnTd = document.getElementById('delContactBtn');
-
-    for (let i = 0; i < deleteBtnTd.length; i++) {
-        deleteBtnTd.parentNode.remove();
-    }
 }
 
 function onAddContactBtnClick() {
