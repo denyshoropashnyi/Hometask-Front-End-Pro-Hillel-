@@ -6,13 +6,13 @@ const contactAgeInput = document.getElementById('ageInput');
 const contactTemplate = document.getElementById('contactTemplate').innerHTML;
 
 addContactBtn.addEventListener('click', onAddContactBtnClick);
-addContact({name: 'Alex', phone:'111'});
+addContact({ name: 'Alex', phone: '111' });
 
-function onAddContactBtnClick(){
+function onAddContactBtnClick() {
     submitContact();
 }
 
-function submitContact(){
+function submitContact() {
     const contact = {
         name: contactNameInput.value,
         phone: contactPhoneInput.value,
@@ -22,19 +22,19 @@ function submitContact(){
     resetContactForm();
 }
 
-function addContact(contact){
+function addContact(contact) {
     const contactTr = document.createElement('tr');
-    
+
     contactTr.innerHTML = contactTemplate
-                .replace('{{name}}', contact.name)
-                .replace('{{phone}}', contact.phone)
-                .replace('{{age}}', contact.age || '-');
+        .replace('{{name}}', contact.name)
+        .replace('{{phone}}', contact.phone)
+        .replace('{{age}}', contact.age || '-');
 
     contactsList.appendChild(contactTr);
 
 }
 
-function resetContactForm(){
+function resetContactForm() {
     contactNameInput.value = '';
     contactPhoneInput.value = '';
     contactAgeInput.value = '';
