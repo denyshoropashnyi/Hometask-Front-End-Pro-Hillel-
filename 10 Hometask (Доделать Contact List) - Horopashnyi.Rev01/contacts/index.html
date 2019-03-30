@@ -19,7 +19,6 @@
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Age</th>
-                <!-- add new th -->
                 <th>Delete contact</th>
             </tr>
         </thead>
@@ -35,9 +34,8 @@
                 <td>
                     <input type="number" id="ageInput">
                 </td>
-                <!-- add new td -->
-                <td id="deleteBtnTd">
-                    <button id="delContactBtn">Click me to delete</button>
+                <td>
+                    <button class="delContactBtn">Click me to delete</button>
                 </td>
             </tr>
             <tr>
@@ -52,9 +50,7 @@
             <td>{{name}}</td>
             <td>{{phone}}</td>
             <td>{{age}}</td>
-
             <td>{{delete}}</td>
-
         </tr>
     </script>
 </body>
