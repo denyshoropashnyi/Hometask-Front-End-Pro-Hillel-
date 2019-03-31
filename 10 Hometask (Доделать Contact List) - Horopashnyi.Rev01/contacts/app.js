@@ -21,9 +21,7 @@ function onDeleleteContactClick() {
 };
 
 function deleteElement(element) {
-    if (element.tagName === 'BUTTON') {
-        element.parentNode.parentNode.remove();
-    };
+    element.tagName === 'BUTTON' && element.parentNode.parentNode.remove();
 };
 
 function onAddContactBtnClick() {
