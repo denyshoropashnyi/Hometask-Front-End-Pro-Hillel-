@@ -9,14 +9,14 @@ const addContactBtn = document.getElementById('addContactBtn');
 const contactTemplate = document.getElementById('contactTemplate').innerHTML;
 
 
-contactsList.addEventListener('click', onDelContactBtnClick);
+contactsList.addEventListener('click', onDeleleteContactClick);
 addContactBtn.addEventListener('click', onAddContactBtnClick);
 
 
 addContact({ name: 'Alex', phone: '111' });
 
 
-function onDelContactBtnClick(element) {
+function onDeleleteContactClick(element) {
     if (element.target.tagName === 'BUTTON') {
         element.target.parentNode.parentNode.remove();
     };
