@@ -45,7 +45,7 @@ function addContact(contact) {
         .replace('{{name}}', contact.name)
         .replace('{{phone}}', contact.phone)
         .replace('{{age}}', contact.age || '-')
-        .replace('{{delete}}', '<button id="delContactBtn">Click me to delete</button>');
+        .replace('{{delete}}', '<button сlass="delContactBtn">Click me to delete</button>');
 
     contactsList.appendChild(contactTr);
 };
