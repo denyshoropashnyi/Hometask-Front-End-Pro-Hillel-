@@ -16,9 +16,13 @@ addContactBtn.addEventListener('click', onAddContactBtnClick);
 addContact({ name: 'Alex', phone: '111' });
 
 
-function onDeleleteContactClick(element) {
-    if (element.target.tagName === 'BUTTON') {
-        element.target.parentNode.parentNode.remove();
+function onDeleleteContactClick() {
+    deleteElement(event.target)
+};
+
+function deleteElement(element) {
+    if (element.tagName === 'BUTTON') {
+        element.parentNode.parentNode.remove();
     };
 };
 
