@@ -8,6 +8,7 @@ function Student(name, marks) {
     this.addMark = addMark;
 };
 
+
 function averageMark() {
     const sum = this.marks.reduce(
         (accumulator, currentValue) => accumulator + currentValue, 0
@@ -24,6 +25,22 @@ function worksDone() {
 
 function addMark(mark) {
     return this.marks.push(mark);
+};
+
+
+function allAverageMark() {
+    const sum = students.reduce(
+        (accumulator, currentValue) => accumulator + currentValue, 0
+    );
+    return (sum / students.length);
+};
+
+function percentComplete() {
+    const sumAllWorksDone = students.reduce((accumulator, currentValue) => accumulator + currentValue.worksDone(), 0);
+
+    const totalAmountWorks = students.reduce((accumulator, currentValue) => accumulator + currentValue.marks.length, 0);
+
+    return (sumAllWorksDone / totalAmountWorks) * 100 + ' percent';
 };
 
 
