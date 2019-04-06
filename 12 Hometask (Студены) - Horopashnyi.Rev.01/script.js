@@ -37,9 +37,7 @@ function allAverageMark() {
 
 function percentComplete() {
     const sumAllWorksDone = students.reduce((accumulator, currentValue) => accumulator + currentValue.worksDone(), 0);
-
     const totalAmountWorks = students.reduce((accumulator, currentValue) => accumulator + currentValue.marks.length, 0);
-
     return (sumAllWorksDone / totalAmountWorks) * 100 + ' percent';
 };
 
