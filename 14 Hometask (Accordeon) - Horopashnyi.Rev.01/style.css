@@ -1,0 +1,12 @@
+.accordeon-element {
+    width: 33%;
+    margin: 4px auto;
+    border: 4px solid #000;
+    border-radius: 8px;
+    background: blue;
+    text-align: center;
+}
+
+.accordeon-body {
+    background-color: yellow;
+}
