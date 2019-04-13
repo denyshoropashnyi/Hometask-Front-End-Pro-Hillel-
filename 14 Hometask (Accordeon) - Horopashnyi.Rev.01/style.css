@@ -1,30 +1,36 @@
 .accordeon-element {
-    width: 33%;
-    margin: 6px auto;
-    text-align: center;
-}
-
-.accordeon-heading:hover {
-    background: indigo;
-    color: skyblue;
+    width: 100%;
+    margin: 0px;
+    text-align: left;
 }
 
 .accordeon-heading {
+    padding: 4px;
     background: skyblue;
     color: indigo;
     cursor: pointer;
     transition: 1s;
 }
 
+.accordeon-heading.active, .accordeon-heading:hover {
+    background: indigo;
+    color: skyblue;
+}
+
 .accordeon-body {
-    background: salmon;
     display: none;
 }
 
-.accordeon-body.show {
+.accordeon-body.active {
     display: block;
 }
 
-.accordeon-body.close {
-    display: none;
+.accordeon-show {
+    display: block;
+}
+
+.accordeon-hide {
+    display: block;
+    padding: 22px;
+    background: salmon;
 }
