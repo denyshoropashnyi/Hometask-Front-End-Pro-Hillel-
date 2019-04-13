@@ -2,14 +2,14 @@
 
 'use strict';
 
-function Accordion(el, config) {
-};
+function Accordeon(el, config) {
+}
 
-const accordion = new Accordion(
+const accordeon = new Accordeon(
     document.getElementById('container'),
     { collapseOther: true }
 );
 
-accordion.open(0);
-accordion.close(0);
-accordion.toggle(1);
+// accordeon.open(0);
+// accordeon.close(0);
+// accordeon.toggle(1);

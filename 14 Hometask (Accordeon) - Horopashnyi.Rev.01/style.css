@@ -1,12 +1,30 @@
 .accordeon-element {
     width: 33%;
-    margin: 4px auto;
-    border: 4px solid #000;
-    border-radius: 8px;
-    background: blue;
+    margin: 6px auto;
     text-align: center;
 }
 
+.accordeon-heading:hover {
+    background: indigo;
+    color: skyblue;
+}
+
+.accordeon-heading {
+    background: skyblue;
+    color: indigo;
+    cursor: pointer;
+    transition: 1s;
+}
+
 .accordeon-body {
-    background-color: yellow;
+    background: salmon;
+    display: none;
+}
+
+.accordeon-body.show {
+    display: block;
+}
+
+.accordeon-body.close {
+    display: none;
 }
