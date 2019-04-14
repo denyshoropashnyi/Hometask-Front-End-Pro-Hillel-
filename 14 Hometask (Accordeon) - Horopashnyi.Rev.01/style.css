@@ -27,10 +27,13 @@
 
 .accordeon-show {
     display: block;
+    padding: 22px;
+    background: salmon;
 }
 
-.accordeon-hide {
+
+.accordeon-dd {
     display: block;
-    padding: 22px;
+    padding: 25s2px;
     background: salmon;
 }
