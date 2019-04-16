@@ -1,37 +1,68 @@
-//@ts-check
-
 'use strict';
 
-let accElement = document.getElementsByClassName('accordeon-element');
-let accHeading = document.getElementsByClassName('accordeon-heading');
-let i;
+function Accordeon(el, config) {
+    this.container = el;
+    this.config = config;
 
-for (i = 0; i < accHeading.length; i++) {
-    accHeading[i].addEventListener('click', toggleItem)
-};
+    this.init();
+}
 
-function toggleItem() {
-    let elementClass = this.parentNode.className;
-    for (i = 0; i < accElement.length; i++) {
-        this.nextElementSibling.className = 'accordeon-show'
+Accordeon.prototype.init = function () {
+    this.bindEventListener();
+}
+
+Accordeon.prototype.bindEventListener = function () {
+    this.container.addEventListener('click', (e) => this.onContainerClick(e));
+}
+
+Accordeon.prototype.onContainerClick = function (e) {
+    if (e.target.classList.contains('accordeon-heading')) {
+        this.toggleElement(e.target.parentNode);
     }
-    if (this.elementClass == 'accordeon-body.active') {
-        this.nextElementSibling.className = 'accordeon-show'
+}
+
+Accordeon.prototype.toggleElement = function (el) {
+    if (el.classList.contains('open')) {
+        this.closeElement(el);
+    } else {
+        this.openElement(el);
     }
-};
+}
 
+Accordeon.prototype.closeElement = function (el) {
+    el.classList.remove('open');
+}
 
+Accordeon.prototype.closeAllElements = function () {
+    Array.prototype.forEach.call(this.container.children, this.closeElement);
+}
 
+Accordeon.prototype.openElement = function (el) {
+    if (this.config.collapseOther) {
+        this.closeAllElements();
+    }
 
+    el.classList.add('open');
+}
 
-// // function Accordeon(el, config) {
-// // }
+Accordeon.prototype.open = function (index) {
+    this.openElement(this.container.children[index]);
+}
 
-// // const accordeon = new Accordeon(
-// //     document.getElementById('container'),
-// //     { collapseOther: true }
-// // );
+Accordeon.prototype.close = function (index) {
+    this.closeElement(this.container.children[index]);
+}
 
-// // accordeon.open(0);
-// // accordeon.close(0);
-// // accordeon.toggle(1);
+Accordeon.prototype.toggle = function (index) {
+    this.toggleElement(this.container.children[index]);
+}
+
+const acc = new Accordeon(
+    document.getElementById('container'),
+    { collapseOther: true }
+);
+
+acc.open(0);
+setTimeout(() => acc.toggle(1), 3000);
+// acc.close(0);
+// acc.toggle(1);

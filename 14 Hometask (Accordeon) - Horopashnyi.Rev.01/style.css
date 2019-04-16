@@ -1,39 +1,26 @@
+body {
+    padding: 10px;
+}
+
 .accordeon-element {
-    width: 100%;
-    margin: 0px;
-    text-align: left;
+    border: 2px solid #bbb;
 }
 
 .accordeon-heading {
-    padding: 4px;
-    background: skyblue;
-    color: indigo;
+    color: #555;
     cursor: pointer;
-    transition: 1s;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: lightyellow;
 }
-
-.accordeon-heading.active, .accordeon-heading:hover {
-    background: indigo;
-    color: skyblue;
-}
-
 .accordeon-body {
+    background-color: white;
+    border-top-width: 1px;
+    color: black;
+    padding: 5px;
     display: none;
 }
 
-.accordeon-body.active {
+.accordeon-element.open .accordeon-body {
     display: block;
-}
-
-.accordeon-show {
-    display: block;
-    padding: 22px;
-    background: salmon;
-}
-
-
-.accordeon-dd {
-    display: block;
-    padding: 25s2px;
-    background: salmon;
 }
