@@ -76,4 +76,4 @@ class Gallery {
     }
 };
 
-const galery = new Gallery(document.getElementById('container'), {delay: 1000});
+const galery = new Gallery(document.getElementById('container'), { delay: 1000 });
