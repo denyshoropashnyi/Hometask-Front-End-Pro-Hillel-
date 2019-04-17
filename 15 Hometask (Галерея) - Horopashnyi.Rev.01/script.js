@@ -1,4 +1,7 @@
+//@ts-check
+
 'use strict';
+
 class Gallery {
     constructor(el, { delay }) {
         const galleryContainer = document.createElement('div');
@@ -7,16 +10,14 @@ class Gallery {
         this.btnPrevImg = document.createElement('button');
         this.btnNextImg = document.createElement('button');
 
-
-        this.btnPrevImg.setAttribute('id', 'btn-prev-img');
-        this.btnPrevImg.innerHTML = ('&#11166;');
-
-        this.btnNextImg.setAttribute('id', 'btn-next-img');
-        this.btnNextImg.innerHTML = ('&#11166;');
-
         galleryContainer.appendChild(el);
 
+        this.btnPrevImg.setAttribute('id', 'btn-prev-img');
+        this.btnPrevImg.innerHTML = ('<');
         galleryContainer.prepend(this.btnPrevImg);
+
+        this.btnNextImg.setAttribute('id', 'btn-next-img');
+        this.btnNextImg.innerHTML = ('>');
         galleryContainer.appendChild(this.btnNextImg);
 
         document.body.insertBefore(galleryContainer, document.body.firstChild);
@@ -71,9 +72,8 @@ class Gallery {
     }
 
     switchImg() {
-        this.el.style.transform = translateX(-{ this.curentPosition * this.imgWidth }'px');
+        this.el.style.transform = 'translateX(-${ this.curentPosition * this.imgWidth }px)';
     }
-}
+};
 
-const galery = new Gallery(document.getElementById('container'), { delay: 222 });
-const galery2 = new Gallery(document.getElementById('container2'), { delay: 444 });
+const galery = new Gallery(document.getElementById('container'), {delay: 1000});
