@@ -1,72 +1,79 @@
-//@ts-check
-
 'use strict';
-
-const galleryContainer = document.createElement('div');
-const gallery = document.getElementById('container');
-
-const btnPrevImg = document.createElement('button');
-const btnNextImg = document.createElement('button');
-
-const allImages = gallery.children;
-
-
-galleryContainer.setAttribute('id', 'gallery-container');
-document.body.insertBefore(galleryContainer, document.body.firstChild);
-
-galleryContainer.appendChild(gallery);
-
-btnPrevImg.setAttribute('id', 'btn-prev-img');
-btnPrevImg.innerHTML = ('&#11164;');
-galleryContainer.prepend(btnPrevImg);
-
-btnNextImg.setAttribute('id', 'btn-next-img');
-btnNextImg.innerHTML = ('&#11166;');
-galleryContainer.appendChild(btnNextImg);
-
-
 class Gallery {
     constructor(el, { delay }) {
+        const galleryContainer = document.createElement('div');
+        galleryContainer.setAttribute('id', 'gallery-container');
+
+        this.btnPrevImg = document.createElement('button');
+        this.btnNextImg = document.createElement('button');
+
+
+        this.btnPrevImg.setAttribute('id', 'btn-prev-img');
+        this.btnPrevImg.innerHTML = ('<');
+
+        this.btnNextImg.setAttribute('id', 'btn-next-img');
+        this.btnNextImg.innerHTML = ('>');
+
+        galleryContainer.appendChild(el);
+
+        galleryContainer.prepend(this.btnPrevImg);
+        galleryContainer.appendChild(this.btnNextImg);
+
+        document.body.insertBefore(galleryContainer, document.body.firstChild);
+
         this.el = el;
         this.delay = delay;
+        this.curentPosition = 0;
+        this.imgWidth = 444;
+        this.imageCounter = el.children.length;
 
         this.init();
     }
 
     init() {
-    };
+        this.addHandlers();
+        this.runTimeout();
+    }
 
     showNextImg() {
-    };
+        if (this.curentPosition + 1 !== this.imageCounter) {
+            this.curentPosition++;
+            this.switchImg();
+        }
+    }
 
     showPrevImg() {
+        if (this.curentPosition - 1 !== 0) {
+            this.curentPosition--;
+            this.switchImg();
+        }
     }
 
-    addEvents() {
-        btnNextImg.addEventListener('click', showNextImg);
-        btnPrevImg.addEventListener('click', showPrevImg);
+    addHandlers() {
+        this.btnNextImg.addEventListener('click', this.showNextImg.bind(this), false);
+        this.btnPrevImg.addEventListener('click', this.showPrevImg.bind(this), false);
     }
 
-};
+    runTimeout() {
+        const interval = setInterval(() => {
+            this.showNextImg();
 
+            if (this.curentPosition + 1 === this.imageCounter) {
+                clearInterval(interval);
+            }
+        }, this.delay);
+    }
 
+    showCurrenImage(index) {
+        this.curentPosition = index;
+        this.switchImg();
+        this.runTimeout();
+    }
 
-btnNextImg.addEventListener('click', showNextImg);
+    switchImg() {
+        this.el.style.transform = translateX(-{ this.curentPosition * this.imgWidth }'px');
+    }
+}
 
-function showNextImg() {
-    gallery.style.transform = "translateX(-444px)";
-    // for (i = 0; i < allImages.length; i++) {
-    //     gallery.classList.add('nextImg');
-    // };
-    return showNextImg()
-};
-
-btnPrevImg.addEventListener('click', showPrevImg);
-
-function showPrevImg(i) {
-    gallery.style.transform = "translateX(444px)";
-
-    // for (i = 0; i < allImages.length; i++) {
-    //     allImages[i].classList.add('prevImg');
-    // };
-};
+const galery = new Gallery(document.getElementById('container'), { delay: 222 });
+const galery2 = new Gallery(document.getElementById('container2'), { delay: 444 });
