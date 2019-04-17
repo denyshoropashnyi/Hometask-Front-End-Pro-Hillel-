@@ -9,10 +9,10 @@ class Gallery {
 
 
         this.btnPrevImg.setAttribute('id', 'btn-prev-img');
-        this.btnPrevImg.innerHTML = ('<');
+        this.btnPrevImg.innerHTML = ('&#11166;');
 
         this.btnNextImg.setAttribute('id', 'btn-next-img');
-        this.btnNextImg.innerHTML = ('>');
+        this.btnNextImg.innerHTML = ('&#11166;');
 
         galleryContainer.appendChild(el);
 
