@@ -49,15 +49,3 @@
   height: 444px;
   width: 444px;
 }
-
-/* delete both classes below? */
-
-.nextImg {
-  transform: translate(-444px);
-  transition: 0.6s ease;
-}
-
-.prevImg {
-  transform: translate(444px);
-  transition: 2s ease, opacity .5s ease-out;
-}
