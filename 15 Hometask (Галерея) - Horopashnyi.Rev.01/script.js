@@ -34,25 +34,42 @@ class Gallery {
     }
 
     init() {
+    };
 
+    showNextImg() {
+    };
+
+    showPrevImg() {
+    }
+
+    addEvents() {
+        btnNextImg.addEventListener('click', showNextImg);
+        btnPrevImg.addEventListener('click', showPrevImg);
     }
 
 };
 
 
+
 btnNextImg.addEventListener('click', showNextImg);
 
 function showNextImg() {
-    for (let i = 0; i < allImages.length; i++) {
-        allImages[i].classList.add('nextImg');
-    };
-    showNextImg()
+    gallery.style.transform = "translateX(-444px)";
+    // for (i = 0; i < allImages.length; i++) {
+    //     gallery.classList.add('nextImg');
+    // };
+    return showNextImg()
 };
 
 btnPrevImg.addEventListener('click', showPrevImg);
 
-function showPrevImg() {
-    for (let i = 0; i < allImages.length; i++) {
-        allImages[i].classList.add('prevImg');
-    };
+function showPrevImg(i) {
+    gallery.style.transform = "translateX(444px)";
+    // for (i = 0; i < allImages.length; i++) {
+    //     allImages[i].classList.add('prevImg');
+    // };
 };
+
+
+console.dir(allImages);
+console.log(allImages);
