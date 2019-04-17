@@ -65,11 +65,8 @@ btnPrevImg.addEventListener('click', showPrevImg);
 
 function showPrevImg(i) {
     gallery.style.transform = "translateX(444px)";
+
     // for (i = 0; i < allImages.length; i++) {
     //     allImages[i].classList.add('prevImg');
     // };
 };
-
-
-console.dir(allImages);
-console.log(allImages);
