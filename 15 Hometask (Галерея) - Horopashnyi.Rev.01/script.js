@@ -1,6 +1,5 @@
 //@ts-check
 'use strict';
-
 class Gallery {
     constructor(el, { delay }) { 
         this.el = el;
@@ -14,7 +13,6 @@ class Gallery {
 
     init() {
         this.createElements();
-
         this.addHandlers();
         this.runTimeout();
     }
