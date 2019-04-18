@@ -43,7 +43,7 @@ class Gallery {
     }
 
     showPrevImg() {
-        if (this.curentPosition - 1 !== 0) {
+        if (this.curentPosition + 1 !== 0) {
             this.curentPosition--;
             this.switchImg();
         }
