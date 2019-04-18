@@ -1,9 +1,9 @@
 * {
   box-sizing: border-box;
-  transition: all 0.5s ease-out
+  transition: all 0.5s ease-out;
 }
 
-#gallery-container {
+.gallery-container {
   position: relative;
   width: 444px;
   height: 444px;
@@ -22,8 +22,8 @@
   width: 444px;
 }
 
-#btn-prev-img,
-#btn-next-img {
+.btn-prev-img,
+.btn-next-img {
   height: 100%;
   border: none;
   font-size: 40px;
@@ -33,20 +33,20 @@
   z-index: 1;
 }
 
-#btn-prev-img {
+.btn-prev-img {
   left: 0;
 }
 
-#btn-next-img {
+.btn-next-img {
   right: 0;
 }
 
-#btn-prev-img:hover {
+.btn-prev-img:hover {
   font-size: 66px;
   background-color: rgba(255, 0, 0, 0.5);
 }
 
-#btn-next-img:hover {
+.btn-next-img:hover {
   font-size: 88px;
   background-color: rgba(0, 255, 0, 0.5);
 }
