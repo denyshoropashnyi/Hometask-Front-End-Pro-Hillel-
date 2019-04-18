@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  transition: all 0.5s ease-out
 }
 
 #gallery-container {
@@ -14,6 +15,11 @@
 #container {
   list-style-type: none;
   display: flex;
+}
+
+#container img {
+  height: 444px;
+  width: 444px;
 }
 
 #btn-prev-img,
@@ -36,16 +42,11 @@
 }
 
 #btn-prev-img:hover {
-  font-size: 60px;
+  font-size: 66px;
   background-color: rgba(255, 0, 0, 0.5);
 }
 
 #btn-next-img:hover {
-  font-size: 80px;
+  font-size: 88px;
   background-color: rgba(0, 255, 0, 0.5);
-}
-
-#container img {
-  height: 444px;
-  width: 444px;
 }
