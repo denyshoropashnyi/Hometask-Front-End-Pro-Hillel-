@@ -2,7 +2,23 @@
 'use strict';
 
 class Gallery {
-    constructor(el, { delay }) { 
+    constructor(el, { delay }) {
+        const galleryContainer = document.createElement('div');
+        galleryContainer.setAttribute('id', 'gallery-container');
+
+        this.btnPrevImg = document.createElement('button');
+        this.btnPrevImg.setAttribute('id', 'btn-prev-img');
+        this.btnPrevImg.innerHTML = ('&#8678;');
+
+        this.btnNextImg = document.createElement('button');
+        this.btnNextImg.setAttribute('id', 'btn-next-img');
+        this.btnNextImg.innerHTML = ('&#8680;');
+
+        document.body.insertBefore(galleryContainer, document.body.firstChild);
+        galleryContainer.appendChild(el);
+        galleryContainer.prepend(this.btnPrevImg);
+        galleryContainer.appendChild(this.btnNextImg);
+
         this.el = el;
         this.delay = delay;
         this.curentPosition = 0;
@@ -13,28 +29,8 @@ class Gallery {
     }
 
     init() {
-        this.createElements();
-
         this.addHandlers();
         this.runTimeout();
-    }
-
-    createElements() {
-        const galleryContainer = document.createElement('div');
-        galleryContainer.classList.add('gallery-container');
-
-        this.btnPrevImg = document.createElement('button');
-        this.btnPrevImg.classList.add('btn-prev-img');
-        this.btnPrevImg.innerHTML = ('&#8678;');
-
-        this.btnNextImg = document.createElement('button');
-        this.btnNextImg.classList.add('btn-next-img')
-        this.btnNextImg.innerHTML = ('&#8680;');
-
-        document.body.insertBefore(galleryContainer, document.body.firstChild);
-        galleryContainer.appendChild(this.el);
-        galleryContainer.prepend(this.btnPrevImg);
-        galleryContainer.appendChild(this.btnNextImg);
     }
 
     showNextImg() {
