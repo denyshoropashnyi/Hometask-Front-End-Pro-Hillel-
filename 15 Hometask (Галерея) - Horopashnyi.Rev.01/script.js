@@ -72,8 +72,10 @@ class Gallery {
     }
 
     switchImg() {
-        this.el.style.transform = 'translateX(-${ this.curentPosition * this.imgWidth }px)';
+        this.el.style.transform = `translateX(-${ this.curentPosition * this.imgWidth }px)`;
     }
 };
 
-const galery = new Gallery(document.getElementById('container'), { delay: 1000 });
+const galery = new Gallery(document.getElementById('container'), { delay: 5000 });
+
+const galery = new Gallery(document.getElementById('container'), { delay: 5000 });
