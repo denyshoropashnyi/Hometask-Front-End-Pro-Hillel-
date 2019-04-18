@@ -4,7 +4,7 @@ class Gallery {
     constructor(el, { delay }) { 
         this.el = el;
         this.delay = delay;
-        this.curentPosition = 0;
+        this.currentPosition = 0;
         this.imgWidth = 444;
         this.imageCounter = el.children.length;
 
@@ -36,15 +36,15 @@ class Gallery {
     }
 
     showNextImg() {
-        if (this.curentPosition + 1 !== this.imageCounter) {
-            this.curentPosition++;
+        if (this.currentPosition + 1 !== this.imageCounter) {
+            this.currentPosition++;
             this.switchImg();
         }
     }
 
     showPrevImg() {
-        if (this.curentPosition + 1 !== 0) {
-            this.curentPosition--;
+        if (this.currentPosition + 1 !== 0) {
+            this.currentPosition--;
             this.switchImg();
         }
     }
@@ -58,21 +58,21 @@ class Gallery {
         const interval = setInterval(() => {
             this.showNextImg();
 
-            if (this.curentPosition + 1 === this.imageCounter) {
+            if (this.currentPosition + 1 === this.imageCounter) {
                 clearInterval(interval);
             }
         }, this.delay);
     }
 
     showCurrenImage(index) {
-        this.curentPosition = index;
+        this.currentPosition = index;
         this.switchImg();
         this.runTimeout();
     }
 
     switchImg() {
-        this.el.style.transform = `translateX(-${this.curentPosition * this.imgWidth}px)`;
+        this.el.style.transform = `translateX(-${this.currentPosition * this.imgWidth}px)`;
     }
 };
 
-const galery = new Gallery(document.getElementById('container'), { delay: 2222 });
+const gallery = new Gallery(document.getElementById('container'), { delay: 2222 });
