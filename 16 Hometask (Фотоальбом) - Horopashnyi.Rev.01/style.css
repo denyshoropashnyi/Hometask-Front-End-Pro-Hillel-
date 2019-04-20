@@ -1,23 +1,37 @@
 .photobook {
   margin: 22px auto;
   width: 50%;
-
-  border: 5px solid green;
 }
 
 .photobook__currentphoto {
-  border: 3px solid red;
-  height: 444px;
-  width: 444px;
-  background-color: yellow;
+  height: 500px;
+  width: 500px;
 }
+
+.photobook__currentphoto img {
+  height: 500px;
+  width: 500px;
+}
+
 .photobook__photolist {
   display: flex;
   list-style-type: none;
 }
 
-.photobook__photolist img {
+.photobook__photolist--image img {
   height: 44px;
+  width: 44px;
   margin: 2px;
+  margin-top: 11px;
+  opacity: 0.222;
 }
 
+.photobook__photolist--image img:hover {
+  height: 66px;
+  width: 66px;
+  margin: 4px;
+  border: 2px solid rgba(37, 175, 152, 0.5);
+  border-radius: 22px;
+  opacity: 1;
+  cursor: pointer;
+}
