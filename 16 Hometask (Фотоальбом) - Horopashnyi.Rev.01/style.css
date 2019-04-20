@@ -1,0 +1,23 @@
+.photobook {
+  margin: 22px auto;
+  width: 50%;
+
+  border: 5px solid green;
+}
+
+.photobook__currentphoto {
+  border: 3px solid red;
+  height: 444px;
+  width: 444px;
+  background-color: yellow;
+}
+.photobook__photolist {
+  display: flex;
+  list-style-type: none;
+}
+
+.photobook__photolist img {
+  height: 44px;
+  margin: 2px;
+}
+

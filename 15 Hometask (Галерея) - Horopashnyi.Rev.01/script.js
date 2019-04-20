@@ -64,7 +64,7 @@ class Gallery {
         }, this.delay);
     }
 
-    showCurrenImage(index) {
+    showCurrentImage(index) {
         this.currentPosition = index;
         this.switchImg();
         this.runTimeout();
