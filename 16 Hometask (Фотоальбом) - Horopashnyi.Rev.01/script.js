@@ -39,11 +39,7 @@ class Album {
     }
 
     changeImg(el) {
-        if (el.target.nodeName === 'IMG') {
-            this.copyImg(el.target)
-        } else {
-            this.removeImg()
-        }
+        (el.target.nodeName === 'IMG') ? this.copyImg(el.target) : this.removeImg();
     }
 
     copyImg(el) {
