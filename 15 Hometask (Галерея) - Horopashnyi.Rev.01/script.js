@@ -1,7 +1,7 @@
 //@ts-check
 'use strict';
 class Gallery {
-    constructor(el, { delay }) { 
+    constructor(el, { delay }) {
         this.el = el;
         this.delay = delay;
         this.currentPosition = 0;
