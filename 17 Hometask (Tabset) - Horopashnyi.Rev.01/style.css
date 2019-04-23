@@ -36,4 +36,10 @@
 
 .tabset__element--body {
   padding: 12px;
+  display: none;
 }
+
+.tabset__element--body--show {
+  display: block;
+}
+
