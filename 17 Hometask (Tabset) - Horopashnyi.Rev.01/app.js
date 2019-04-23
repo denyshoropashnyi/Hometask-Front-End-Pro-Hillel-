@@ -4,12 +4,10 @@
 class Tabset {
     constructor(el) {
         this.el = el;
+        this.showCls = 'tabset__element--body--show';
+        this.openedElem = 0;
 
         this.init();
-
-        this.showCls = 'tabset__element--body--show';
-
-        this.openedElem = 1;
     }
 
     init() {
