@@ -4,10 +4,8 @@
 class Tabset {
     constructor(el) {
         this.el = el;
-
         this.checkedHeadingClass = 'tabset__element--heading--checked';
         this.showBodyClass = 'tabset__element--body--show';
-
         this.openedElem = 1;
 
         this.init();
@@ -69,30 +67,28 @@ class Tabset {
     }
 
     removeBody() {
-        // this.bodyShown.parentNode.removeChild(this.bodyShown);   -      Delete all headings
-
+        while (this.bodyShown.firstChild) {
+            this.bodyShown.firstChild.remove();
+        }
         for (let item = 0; item < this.tabsetElementHeading.length; item++) {
             this.tabsetElementHeading[item].classList.remove(this.checkedHeadingClass);
         }
     }
 
     show() {
+        this.tabsetElementHeading[(this.openedElem - 1)].classList.add(this.checkedHeadingClass);
         this.cloneUserElement = this.tabsetElementBody[(this.openedElem - 1)].cloneNode(true);
         this.bodyShown.appendChild(this.cloneUserElement);
         this.cloneUserElement.classList.add('tabset__element--body--show');
     }
-
-    next() {
-    }
 };
-
 
 const tabs = new Tabset(
     document.getElementById('container')
 );
 
 
-tabs.show();
+// tabs.show();
 
 // tabs.next();
 // tabs.prev();

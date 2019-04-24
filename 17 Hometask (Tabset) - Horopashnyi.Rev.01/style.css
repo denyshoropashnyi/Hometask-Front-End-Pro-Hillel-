@@ -24,12 +24,12 @@
 }
 
 .tabset__element--heading:hover {
-  border: 0.05px solid rgba(169, 169, 169, 0.22);
+  color: skyblue;
+  border: 0.25px solid rgba(169, 169, 169, 0.22);
 }
 
 .tabset__element--heading--checked {
-  color: skyblue;
-  border: 1px solid rgba(169, 169, 169, 0.66);
+  border: 0.25px solid rgba(169, 169, 169, 0.66);
   border-bottom: none;
 }
 
@@ -40,6 +40,5 @@
 .tabset__element--body--show {
   display: block;
   padding: 10px;
-  border: 1px solid rgba(169, 169, 169, 0.22);
-  border-top: none;
+  border: 0.25px solid rgba(169, 169, 169, 0.22);
 }
