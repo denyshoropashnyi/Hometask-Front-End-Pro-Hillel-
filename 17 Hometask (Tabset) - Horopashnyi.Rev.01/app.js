@@ -6,10 +6,9 @@ class Tabset {
         this.el = el;
         this.checkedHeadingClass = 'tabset__element--heading--checked';
         this.showBodyClass = 'tabset__element--body--show';
-        this.openedElement = 2;
+        this.openedElement = 1;
 
         this.init();
-
     }
 
     init() {
@@ -49,7 +48,7 @@ class Tabset {
         this.tabsetElementBody = this.el.getElementsByClassName('tabset-body');
         for (let i = 0; i < this.tabsetElementBody.length; i++) {
             this.tabsetElementBody[i].classList.add('tabset__element--body');
-        };
+        }
     }
 
     addListeners() {
@@ -86,25 +85,37 @@ class Tabset {
 
     next() {
         this.removeBody();
-        let nextNum = (this.openedElement);
+        let nextNum = this.openedElement;
         if (nextNum < this.tabsetElementHeading.length) {
             this.tabsetElementHeading[nextNum].classList.add(this.checkedHeadingClass);
             this.cloneUserElement = this.tabsetElementBody[nextNum].cloneNode(true);
             this.bodyShown.appendChild(this.cloneUserElement);
             this.cloneUserElement.classList.add('tabset__element--body--show');
-            return nextNum;
+        } else {
+            alert('It was last element.')
+        }
+    }
+
+    prev() {
+        this.removeBody();
+        let prevNum = this.openedElement - 1;
+        if (prevNum < this.tabsetElementHeading.length) {
+            this.tabsetElementHeading[prevNum - 1].classList.add(this.checkedHeadingClass);
+            this.cloneUserElement = this.tabsetElementBody[prevNum - 1].cloneNode(true);
+            this.bodyShown.appendChild(this.cloneUserElement);
+            this.cloneUserElement.classList.add('tabset__element--body--show');
+        } else {
+            alert('It was first element.')
         }
     }
 };
+
 
 const tabs = new Tabset(
     document.getElementById('container')
 );
 
 
-// tabs.show(3);
-
+// tabs.show(2);
 // tabs.next();
-
-
 // tabs.prev();
