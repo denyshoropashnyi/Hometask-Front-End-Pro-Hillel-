@@ -14,10 +14,6 @@
   display: flex;
 }
 
-.tabset__element {
-  margin: 6px;
-}
-
 .tabset__element--heading {
   cursor: pointer;
   padding: 4px;
