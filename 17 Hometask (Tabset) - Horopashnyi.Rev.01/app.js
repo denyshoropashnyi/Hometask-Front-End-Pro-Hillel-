@@ -1,22 +1,41 @@
-// // @ts-check
+// @ts-check
 'use strict';
 
 class Tabset {
     constructor(el) {
         this.el = el;
-        this.showCls = 'tabset__element--body--show';
-        this.openedElem = 0;
+
+        this.checkedHeadingClass = 'tabset__element--heading--checked';
+        this.showBodyClass = 'tabset__element--body--show';
+
+        this.openedElem = 1;
 
         this.init();
     }
 
     init() {
-        this.addClassNames();
+        this.createElements();
+        this.applyClassNames();
+        this.appendElements();
         this.addListeners();
+        this.show();
     }
 
-    addClassNames() {
-        this.el.classList.add('wrapper__tabset');
+    createElements() {
+        this.tabsetWrapper = document.createElement('div');
+        this.bodyShown = document.createElement('div');
+    }
+
+    applyClassNames() {
+        this.tabsetWrapper.classList.add('tabset__wrapper');
+        this.el.classList.add('tabset__container');
+        this.bodyShown.classList.add('tabset__element--body--shown');
+    }
+
+    appendElements() {
+        document.body.insertBefore(this.tabsetWrapper, this.el);
+        this.tabsetWrapper.appendChild(this.el);
+        this.tabsetWrapper.appendChild(this.bodyShown);
 
         this.tabsetElement = this.el.children;
         for (let i = 0; i < this.tabsetElement.length; i++) {
@@ -36,29 +55,34 @@ class Tabset {
 
     addListeners() {
         for (let item = 0; item < this.tabsetElementHeading.length; item++) {
-            this.tabsetElementHeading[item].addEventListener('click', this.showBody.bind(this) );
+            this.tabsetElementHeading[item].addEventListener('click', this.showBody.bind(this));
         }
     }
 
     showBody(event) {
         this.removeBody();
-        event.target.nextElementSibling.classList.add(this.showCls);
-        //this.openedElem = item;
+        event.target.classList.add(this.checkedHeadingClass);
 
+        this.cloneTabsetElementBody = event.target.nextElementSibling.cloneNode(true);
+        this.bodyShown.appendChild(this.cloneTabsetElementBody);
+        this.cloneTabsetElementBody.classList.add('tabset__element--body--show');
     }
 
     removeBody() {
-        for (let item of this.tabsetElementBody) {
-            item.classList.remove(this.showCls);
+        this.bodyShown.parentNode.removeChild(this.bodyShown);
+
+        for (let item = 0; item < this.tabsetElementHeading.length; item++) {
+            this.tabsetElementHeading[item].classList.remove(this.checkedHeadingClass);
         }
     }
 
-    show(e) {
-        this.tabsetElementBody[e - 1].classList.add(this.showCls);
+    show() {
+        this.cloneUserElement = this.tabsetElementBody[(this.openedElem - 1)].cloneNode(true);
+        this.bodyShown.appendChild(this.cloneUserElement);
+        this.cloneUserElement.classList.add('tabset__element--body--show');
     }
 
     next() {
-
     }
 };
 
@@ -68,6 +92,7 @@ const tabs = new Tabset(
 );
 
 
-// tabs.show();
+tabs.show();
+
 // tabs.next();
 // tabs.prev();

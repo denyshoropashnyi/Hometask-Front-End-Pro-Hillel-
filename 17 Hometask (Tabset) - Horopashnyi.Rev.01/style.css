@@ -5,37 +5,41 @@
   transition: all 0.2s ease-in-out;
 }
 
-.wrapper__tabset {
-  margin: 22px;
+.tabset__wrapper {
+  width: 88%;
+  margin: 0 auto;
+}
+
+.tabset__container {
   display: flex;
 }
 
 .tabset__element {
-  margin: 11px;
+  margin: 6px;
 }
 
 .tabset__element--heading {
-  font-size: 18px;
-  border-radius: 7.5px;
-  padding: 3px;
   cursor: pointer;
+  padding: 4px;
 }
 
 .tabset__element--heading:hover {
-  font-size: 20px;
-  border: 1px solid rgba(169, 169, 169, 0.22);
+  border: 0.05px solid rgba(169, 169, 169, 0.22);
 }
 
 .tabset__element--heading--checked {
   color: skyblue;
-  background-color: rgba(169, 169, 169, 0.22);
+  border: 1px solid rgba(169, 169, 169, 0.66);
+  border-bottom: none;
 }
 
 .tabset__element--body {
-  padding: 6px;
   display: none;
 }
 
 .tabset__element--body--show {
   display: block;
+  padding: 10px;
+  border: 1px solid rgba(169, 169, 169, 0.22);
+  border-top: none;
 }
