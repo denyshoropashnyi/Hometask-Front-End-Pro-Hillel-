@@ -69,7 +69,7 @@ class Tabset {
     }
 
     removeBody() {
-        this.bodyShown.parentNode.removeChild(this.bodyShown);
+        // this.bodyShown.parentNode.removeChild(this.bodyShown);   -      Delete all headings
 
         for (let item = 0; item < this.tabsetElementHeading.length; item++) {
             this.tabsetElementHeading[item].classList.remove(this.checkedHeadingClass);
