@@ -6,7 +6,7 @@ class Tabset {
         this.el = el;
         this.checkedHeadingClass = 'tabset__element--heading--checked';
         this.showBodyClass = 'tabset__element--body--show';
-        this.openedElement = 1;
+        this.openedElement = 2;
 
         this.init();
 
@@ -83,6 +83,18 @@ class Tabset {
         this.bodyShown.appendChild(this.cloneUserElement);
         this.cloneUserElement.classList.add('tabset__element--body--show');
     }
+
+    next() {
+        this.removeBody();
+        let nextNum = (this.openedElement);
+        if (nextNum < this.tabsetElementHeading.length) {
+            this.tabsetElementHeading[nextNum].classList.add(this.checkedHeadingClass);
+            this.cloneUserElement = this.tabsetElementBody[nextNum].cloneNode(true);
+            this.bodyShown.appendChild(this.cloneUserElement);
+            this.cloneUserElement.classList.add('tabset__element--body--show');
+            return nextNum;
+        }
+    }
 };
 
 const tabs = new Tabset(
@@ -90,8 +102,9 @@ const tabs = new Tabset(
 );
 
 
-// tabs.show(2);
-
+// tabs.show(3);
 
 // tabs.next();
+
+
 // tabs.prev();
