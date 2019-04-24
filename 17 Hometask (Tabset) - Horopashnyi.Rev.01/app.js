@@ -77,7 +77,6 @@ class Tabset {
     }
 
     show(index) {
-        // this.openedElement = index;
         this.removeBody();
         this.tabsetElementHeading[(index - 1)].classList.add(this.checkedHeadingClass);
         this.cloneUserElement = this.tabsetElementBody[(index - 1)].cloneNode(true);
