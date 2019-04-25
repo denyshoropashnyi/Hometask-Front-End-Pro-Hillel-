@@ -2,10 +2,11 @@
 'use strict';
 
 class Tabset {
+    static SHOW_BODY_CLASS = 'tabset__element--body--show';
+    static CHECKED_HEADING_CLASS = 'tabset__element--heading--checked';
+
     constructor(el) {
         this.el = el;
-        this.checkedHeadingClass = 'tabset__element--heading--checked';
-        this.showBodyClass = 'tabset__element--body--show';
         this.openedElement = 1;
 
         this.init();
@@ -31,7 +32,7 @@ class Tabset {
     }
 
     appendElements() {
-        document.body.insertBefore(this.tabsetWrapper, this.el);
+        this.el.parentNode.insertBefore(this.tabsetWrapper, this.el);
         this.tabsetWrapper.appendChild(this.el);
         this.tabsetWrapper.appendChild(this.bodyShown);
 
@@ -52,14 +53,12 @@ class Tabset {
     }
 
     addListeners() {
-        for (let item = 0; item < this.tabsetElementHeading.length; item++) {
-            this.tabsetElementHeading[item].addEventListener('click', this.showBody.bind(this));
-        }
+        this.el.addEventListener('click', this.showBody.bind(this));
     }
 
     showBody(event) {
         this.removeBody();
-        event.target.classList.add(this.checkedHeadingClass);
+        event.target.classList.add(Tabset.CHECKED_HEADING_CLASS);
 
         this.cloneTabsetElementBody = event.target.nextElementSibling.cloneNode(true);
         this.bodyShown.appendChild(this.cloneTabsetElementBody);
@@ -71,14 +70,14 @@ class Tabset {
             this.bodyShown.firstChild.remove();
         }
         for (let item = 0; item < this.tabsetElementHeading.length; item++) {
-            this.tabsetElementHeading[item].classList.remove(this.checkedHeadingClass);
+            this.tabsetElementHeading[item].classList.remove(Tabset.CHECKED_HEADING_CLASS);
         }
     }
 
     show(index) {
         if (index > 0 && index <= this.tabsetElementHeading.length) {
             this.removeBody();
-            this.tabsetElementHeading[(index - 1)].classList.add(this.checkedHeadingClass);
+            this.tabsetElementHeading[(index - 1)].classList.add(Tabset.CHECKED_HEADING_CLASS);
             this.cloneUserElement = this.tabsetElementBody[(index - 1)].cloneNode(true);
             this.bodyShown.appendChild(this.cloneUserElement);
             this.cloneUserElement.classList.add('tabset__element--body--show');
