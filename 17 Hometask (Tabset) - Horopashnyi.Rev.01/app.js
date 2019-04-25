@@ -76,34 +76,30 @@ class Tabset {
     }
 
     show(index) {
-        this.removeBody();
-        this.tabsetElementHeading[(index - 1)].classList.add(this.checkedHeadingClass);
-        this.cloneUserElement = this.tabsetElementBody[(index - 1)].cloneNode(true);
-        this.bodyShown.appendChild(this.cloneUserElement);
-        this.cloneUserElement.classList.add('tabset__element--body--show');
+        if (index > 0 && index <= this.tabsetElementHeading.length) {
+            this.removeBody();
+            this.tabsetElementHeading[(index - 1)].classList.add(this.checkedHeadingClass);
+            this.cloneUserElement = this.tabsetElementBody[(index - 1)].cloneNode(true);
+            this.bodyShown.appendChild(this.cloneUserElement);
+            this.cloneUserElement.classList.add('tabset__element--body--show');
+        } else {
+            alert('Invalid number.')
+        }
     }
 
     next() {
-        this.removeBody();
-        let nextNum = this.openedElement;
-        if (nextNum < this.tabsetElementHeading.length) {
-            this.tabsetElementHeading[nextNum].classList.add(this.checkedHeadingClass);
-            this.cloneUserElement = this.tabsetElementBody[nextNum].cloneNode(true);
-            this.bodyShown.appendChild(this.cloneUserElement);
-            this.cloneUserElement.classList.add('tabset__element--body--show');
+        this.openedElement++;
+        if (this.openedElement <= this.tabsetElementHeading.length) {
+            this.show(this.openedElement)
         } else {
             alert('It was last element.')
         }
     }
 
     prev() {
-        this.removeBody();
-        let prevNum = this.openedElement - 1;
-        if (prevNum < this.tabsetElementHeading.length) {
-            this.tabsetElementHeading[prevNum - 1].classList.add(this.checkedHeadingClass);
-            this.cloneUserElement = this.tabsetElementBody[prevNum - 1].cloneNode(true);
-            this.bodyShown.appendChild(this.cloneUserElement);
-            this.cloneUserElement.classList.add('tabset__element--body--show');
+        this.openedElement--;
+        if (this.openedElement != 0) {
+            this.show(this.openedElement)
         } else {
             alert('It was first element.')
         }
@@ -116,6 +112,6 @@ const tabs = new Tabset(
 );
 
 
-// tabs.show(2);
+// tabs.show();
 // tabs.next();
 // tabs.prev();
