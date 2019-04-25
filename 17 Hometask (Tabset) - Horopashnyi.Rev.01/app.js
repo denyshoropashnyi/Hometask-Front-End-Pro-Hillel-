@@ -3,7 +3,7 @@
 
 class Tabset {
     static SHOW_BODY_CLASS = 'tabset__element--body--show';
-    static CHECKED_HEADING_CLASS = 'tabset__element--heading--checked';
+    static CHECKED_HEADING_CLASS = 'tabset__element--heading--clicked';
 
     constructor(el) {
         this.el = el;
@@ -57,12 +57,14 @@ class Tabset {
     }
 
     showBody(event) {
-        this.removeBody();
-        event.target.classList.add(Tabset.CHECKED_HEADING_CLASS);
+        if (event.target.classList.contains('tabset__element--heading')) {
+            this.removeBody();
+            event.target.classList.add(Tabset.CHECKED_HEADING_CLASS);
 
-        this.cloneTabsetElementBody = event.target.nextElementSibling.cloneNode(true);
-        this.bodyShown.appendChild(this.cloneTabsetElementBody);
-        this.cloneTabsetElementBody.classList.add('tabset__element--body--show');
+            this.cloneTabsetElementBody = event.target.nextElementSibling.cloneNode(true);
+            this.bodyShown.appendChild(this.cloneTabsetElementBody);
+            this.cloneTabsetElementBody.classList.add('tabset__element--body--show');
+        }
     }
 
     removeBody() {
