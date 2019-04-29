@@ -8,6 +8,9 @@ class Users {
 const usersList = new Users(
     document.getElementById('usersListTable')
 );
+const basicUrl = 'https://jsonplaceholder.typicode.com/';
+const userUrl = 'users';
+
 
 
 /****** Function to make request *******
@@ -21,7 +24,9 @@ var request = function () {
         xhr.onload = function () {
             callback(JSON.parse(xhr.responseText));
         };
-        xhr.open(method, url);
+        xhr.open(method, url, true);
         xhr.send();
     };
 }();
+
+request('get', (basicUrl + userUrl), (resp)=> {console.log(resp)});
