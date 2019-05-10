@@ -1,0 +1,22 @@
+.user-row {
+  cursor: pointer;
+}
+
+.user-row:hover {
+  background-color: #3d4547;
+}
+
+.list {
+  float: left;
+  width: 45%;
+  margin: 10px;
+}
+
+input {
+  width: 24%;
+}
+
+#submit {
+  width: 100%;
+  cursor: pointer;
+}
