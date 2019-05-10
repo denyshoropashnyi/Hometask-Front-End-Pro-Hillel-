@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Task 19</title>
     <link rel="stylesheet" href="common/css/normalize.css" type="text/css" />
     <link rel="stylesheet" href="common/css/skeleton.css" type="text/css" />
     <link rel="stylesheet" href="common/css/dark-theme.css" type="text/css" />
     <link rel="stylesheet" href="style.css" type="text/css" />
     <script async src="app.js"></script>
+    <title>Task 19</title>
   </head>
 
   <body>
@@ -26,15 +26,15 @@
     </table>
 
     <form action="" id="addNewUser">
-      <input type="text" id="name" placeholder="name" />
-      <input type="text" id="surname" placeholder="surname" />
-      <input type="tel" id="phone" placeholder="phone" />
-      <input type="email" name="" id="email" placeholder="email" />
+      <input type="text" id="name" placeholder="name" required />
+      <input type="text" id="surname" placeholder="surname" required />
+      <input type="tel" id="phone" placeholder="phone" required />
+      <input type="email" name="" id="email" placeholder="email" required />
     </form>
-    <input type="submit" value="Add" id="submit" />
+    <input type="submit" value="Add User" id="submit" />
 
     <script type="text/template" id="userTemplate">
-      <tr data-user-id="{{id}}" class="user-row">
+      <tr data-user-id="{{id}}" class="user-row user-item">
           <td>{{name}}</td>
           <td>{{surname}}</td>
           <td>{{phone}}</td>

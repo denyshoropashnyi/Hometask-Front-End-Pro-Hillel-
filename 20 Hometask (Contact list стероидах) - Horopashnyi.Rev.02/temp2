@@ -1,6 +1,3 @@
-// // @ts-check
-'use strict';
-
 const USER_LIST_URL = 'http://fep-app.herokuapp.com/api/contacts';
 
 const USER_LIST_TABLE = document.getElementById('usersListTable');
@@ -13,12 +10,11 @@ const USER_SURNAME = document.getElementById('surname');
 const USER_TELEPHONE_NUMBER = document.getElementById('phone');
 const USER_EMAIL = document.getElementById('email');
 
-let users = [];
-
 init();
 
 function init() {
     USER_SUBMIT.addEventListener('click', onUserSubmit);
+    USER_LIST_TABLE.addEventListener('click', onUserClick);
 
     fetchUsers();
 }
@@ -32,6 +28,8 @@ function fetchUsers() {
 
 function addUsers(data) {
     users = data;
+
+
     return data;
 }
 
@@ -40,10 +38,15 @@ function renderUsers(data) {
 
     USER_LIST_TABLE_BODY.innerHTML = data.map((user) => {
         return USER_ROW_TEMPLATE
+            .replace('{{id}}', user.id)
+
             .replace('{{name}}', user.name)
             .replace('{{surname}}', user.surname)
             .replace('{{phone}}', user.phone)
             .replace('{{email}}', user.email)
+
+            .replace('{{class}}', user.isDone ? 'done' : '')
+
     }).join('\n');
 }
 
@@ -83,4 +86,21 @@ function onUserClick(event) {
 function resetForm() {
     const addNewUser = document.getElementById('addNewUser');
     addNewUser.reset();
+}
+
+function toggleUserState(el) {
+    const id = el.dataset.userid;
+    const user = users.find((el) => {return el.id == id} );
+
+    user.isDone = !user.isDone;
+    console.log(id, user);
+
+    return fetch(USER_LIST_URL + '/' + user.id, {
+        method: "PUT",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
 }
