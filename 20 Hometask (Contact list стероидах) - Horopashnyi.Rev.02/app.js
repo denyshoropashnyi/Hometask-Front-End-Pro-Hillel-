@@ -18,7 +18,7 @@ init();
 
 function init() {
     userSubmit.addEventListener('click', onUserSubmit);
-
+    userListTableBody.addEventListener('click', onUserClick);
     fetchUsers();
 }
 
@@ -43,6 +43,8 @@ function renderUsers(data) {
             .replace('{{surname}}', user.surname)
             .replace('{{phone}}', user.phone)
             .replace('{{email}}', user.email)
+            .replace('{{id}}', user.id)
+            .replace('{{class}}', user.isDone ? 'done' : '')
     }).join('\n');
 }
 
@@ -57,7 +59,8 @@ function userAdd() {
         name: userName.value,
         surname: userSurname.value,
         phone: userTelephoneNumber.value,
-        email: userEmail.value
+        email: userEmail.value,
+        isDone: false
     }
 
     addUser(newUser).then(fetchUsers);
@@ -78,13 +81,32 @@ function addUser(newUser) {
 
 function onUserClick(event) {
     console.log(event.target)
-    if (event.target.classList.contains('user-item')) {
-        toggleUserState(event.target)
+    if (event.target.parentNode.classList.contains('user-item')) {
+        toggleUserState(event.target.parentNode)
             .then(fetchUsers);
     }
 }
 
-function resetForm() {
-    const addNewUser = document.getElementById('addNewUser');
-    addNewUser.reset();
+function toggleUserState(el) {
+    const id = el.dataset.userId;
+    const contact = users.find((el) => { return el.id == id });
+
+    contact.isDone = !contact.isDone;
+    console.log(id, contact);
+
+    return fetch(USER_LIST_URL + '/' + contact.id, {
+        method: "PUT",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(contact)
+
+    })
 }
+
+
+function resetForm() {
+            const addNewUser = document.getElementById('addNewUser');
+            addNewUser.reset();
+        }
