@@ -2,23 +2,22 @@
 'use strict';
 
 const USER_LIST_URL = 'http://fep-app.herokuapp.com/api/contacts';
-
-const USER_LIST_TABLE = document.getElementById('usersListTable');
-const USER_LIST_TABLE_BODY = USER_LIST_TABLE.getElementsByTagName('tbody')[0];
 const USER_ROW_TEMPLATE = document.getElementById('userTemplate').innerHTML;
-const USER_SUBMIT = document.getElementById('submit');
 
-const USER_NAME = document.getElementById('name');
-const USER_SURNAME = document.getElementById('surname');
-const USER_TELEPHONE_NUMBER = document.getElementById('phone');
-const USER_EMAIL = document.getElementById('email');
+const userListTable = document.getElementById('usersListTable');
+const userListTableBody = userListTable.getElementsByTagName('tbody')[0];
+const userSubmit = document.getElementById('submit');
+const userName = document.getElementById('name');
+const userSurname = document.getElementById('surname');
+const userTelephoneNumber = document.getElementById('phone');
+const userEmail = document.getElementById('email');
 
 let users = [];
 
 init();
 
 function init() {
-    USER_SUBMIT.addEventListener('click', onUserSubmit);
+    userSubmit.addEventListener('click', onUserSubmit);
 
     fetchUsers();
 }
@@ -38,7 +37,7 @@ function addUsers(data) {
 function renderUsers(data) {
     console.log(data);
 
-    USER_LIST_TABLE_BODY.innerHTML = data.map((user) => {
+    userListTableBody.innerHTML = data.map((user) => {
         return USER_ROW_TEMPLATE
             .replace('{{name}}', user.name)
             .replace('{{surname}}', user.surname)
@@ -50,11 +49,16 @@ function renderUsers(data) {
 function onUserSubmit(event) {
     event.preventDefault();
 
-    userSubmit();
+    userAdd();
 }
 
-function userSubmit() {
-    const newUser = { name: USER_NAME.value, surname: USER_SURNAME.value, phone: USER_TELEPHONE_NUMBER.value, email: USER_EMAIL.value }
+function userAdd() {
+    const newUser = {
+        name: userName.value,
+        surname: userSurname.value,
+        phone: userTelephoneNumber.value,
+        email: userEmail.value
+    }
 
     addUser(newUser).then(fetchUsers);
 
