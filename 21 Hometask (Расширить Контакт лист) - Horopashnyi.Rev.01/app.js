@@ -1,4 +1,3 @@
-// // @ts-check
 'use strict';
 
 const URL = 'http://fep-app.herokuapp.com/api/contacts';
@@ -13,7 +12,6 @@ const contactEmailInput = document.getElementById('emailInput');
 
 const contactTemplate = document.getElementById('contactTemplate').innerHTML;
 const editContactTemplate = document.getElementById('editContactTemplate').innerHTML;
-
 
 let contacts = [];
 
@@ -72,10 +70,18 @@ function onContactsListClick(event) {
         fetchContacts();
     } else if (event.target.classList.contains('btn-save')) {
         saveContact(event.target.parentNode.parentNode);
+
+    } else if (event.target.tagname = 'TD') {
+        togglePopupState(event.target.parentNode);
     } else {
         toggleContactState(event.target.parentNode.dataset.contactId)
             .then(fetchContacts);
     }
+}
+
+
+function togglePopupState(el) {
+    el.classList.toggle('showPopup')
 }
 
 
@@ -103,10 +109,8 @@ function saveContact(el) {
     contact.phone = el.children[2].children[0].value;
     contact.email = el.children[3].children[0].value;
 
-    console.log(el.children);
     updateContact(contact);
     fetchContacts();
-
 }
 
 
@@ -167,6 +171,4 @@ function resetContactForm() {
     contactSurnameInput.value = '';
     contactPhoneInput.value = '';
     emailInput.value = '';
-
-    //newContactForm.reset();
 }
