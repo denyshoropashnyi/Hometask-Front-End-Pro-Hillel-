@@ -24,7 +24,9 @@
             <th>Actions</th>
           </tr>
         </thead>
+
         <tbody id="contactsList"></tbody>
+
         <tfoot>
           <tr>
             <td>
@@ -64,14 +66,41 @@
         </tfoot>
       </table>
     </form>
+
     <script type="text/template" id="contactTemplate">
       <tr data-contact-id="{{id}}" class="{{class}}">
           <td>{{name}}</td>
           <td>{{surname}}</td>
           <td>{{phone}}</td>
           <td>{{email}}</td>
-          <td><button type="button">Delete</button></td>
+          <td><button class = "btn-edit" type="button">Edit</button></td>
+          <td><button class = "btn-delete" type="button">Delete</button></td>
       </tr>
     </script>
+
+    <script type="text/template" id="editContactTemplate">
+      <tr data-contact-id="{{id}}" class="{{class}}">
+        <td>
+          <input type="text" value = {{name}} />
+        </td>
+        <td>
+          <input type="text" value = {{surname}} />
+        </td>
+        <td>
+          <input type="tel" value = {{phone}} />
+        </td>
+        <td>
+          <input type="email" value = {{email}} />
+        </td>
+
+        <td>
+          <button class = "btn-cancel" type="button">Cancel</button>
+        </td>
+        <td>
+          <button class = "btn-save" type="button">Save</button>
+        </td>
+      </tr>
+    </script>
+    
   </body>
 </html>

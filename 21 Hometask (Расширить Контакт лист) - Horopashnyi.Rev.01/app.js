@@ -12,14 +12,20 @@ const contactEmailInput = document.getElementById('emailInput');
 
 const contactTemplate = document.getElementById('contactTemplate').innerHTML;
 
+
 let contacts = [];
+
+
 init()
+
+
 function init() {
     newContactForm.addEventListener('submit', newContactFormSubmit);
     contactsList.addEventListener('click', onContactsListClick);
 
     fetchContacts();
 }
+
 
 function fetchContacts() {
     return fetch(URL)
@@ -28,9 +34,11 @@ function fetchContacts() {
         .then(renderContacts);
 }
 
+
 function setContacts(data) {
     return contacts = data
 }
+
 
 function renderContacts(data) {
     contactsList.innerHTML = data.map((contact) => {
@@ -44,11 +52,13 @@ function renderContacts(data) {
     }).join('\n');
 }
 
+
 function newContactFormSubmit(e) {
     e.preventDefault();
 
     submitContact();
 }
+
 
 function onContactsListClick(event) {
     if (event.target.tagName === 'BUTTON') {
@@ -60,9 +70,11 @@ function onContactsListClick(event) {
     }
 }
 
+
 function removeContact(id) {
     return fetch(URL + '/' + id, { method: 'DELETE' });
 }
+
 
 function toggleContactState(id) {
     const contact = contacts.find((c) => c.id == id);
@@ -70,6 +82,7 @@ function toggleContactState(id) {
     contact.is_active = !contact.is_active;
     return updateContact(contact);
 };
+
 
 function updateContact(contact) {
     return fetch(URL + '/' + contact.id, {
@@ -81,6 +94,7 @@ function updateContact(contact) {
         body: JSON.stringify(contact)
     });
 }
+
 
 function submitContact() {
     const contact = {
@@ -96,6 +110,7 @@ function submitContact() {
     resetContactForm();
 }
 
+
 function addContact(contact) {
     return fetch(URL, {
         method: "POST",
@@ -106,6 +121,7 @@ function addContact(contact) {
         body: JSON.stringify(contact)
     });
 }
+
 
 function resetContactForm() {
     //newContactForm.reset();
