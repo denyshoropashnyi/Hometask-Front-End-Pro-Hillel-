@@ -6,11 +6,11 @@ const USER_ROW_TEMPLATE = document.getElementById('userTemplate').innerHTML;
 
 const userListTable = document.getElementById('usersListTable');
 const userListTableBody = userListTable.getElementsByTagName('tbody')[0];
-const userSubmit = document.getElementById('submit');
-const userName = document.getElementById('name');
-const userSurname = document.getElementById('surname');
-const userTelephoneNumber = document.getElementById('phone');
-const userEmail = document.getElementById('email');
+const userSubmit = document.getElementById('userSubmit');
+const userName = document.getElementById('nameSubmit');
+const userSurname = document.getElementById('surnameSubmit');
+const userTelephoneNumber = document.getElementById('phoneSubmit');
+const userEmail = document.getElementById('emailSubmit');
 
 let users = [];
 
@@ -30,13 +30,10 @@ function fetchUsers() {
 }
 
 function addUsers(data) {
-    users = data;
-    return data;
+    return users = data;
 }
 
 function renderUsers(data) {
-    console.log(data);
-
     userListTableBody.innerHTML = data.map((user) => {
         return USER_ROW_TEMPLATE
             .replace('{{name}}', user.name)
