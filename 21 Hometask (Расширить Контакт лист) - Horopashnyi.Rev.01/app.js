@@ -4,10 +4,12 @@
 const URL = 'http://fep-app.herokuapp.com/api/contacts';
 const newContactForm = document.getElementById('newContactForm');
 const contactsList = document.getElementById('contactsList');
+
 const contactNameInput = document.getElementById('nameInput');
 const contactSurnameInput = document.getElementById('surnameInput');
 const contactPhoneInput = document.getElementById('phoneInput');
 const contactEmailInput = document.getElementById('emailInput');
+
 const contactTemplate = document.getElementById('contactTemplate').innerHTML;
 
 let contacts = [];
