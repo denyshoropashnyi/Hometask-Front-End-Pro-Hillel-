@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="common/css/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="common/css/skeleton.css" type="text/css" />
+    <link rel="stylesheet" href="common/css/dark-theme.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script async src="app.js"></script>
+    <title>Task 21</title>
+  </head>
+
+  <body>
+    <form id="newContactForm">
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="contactsList"></tbody>
+        <tfoot>
+          <tr>
+            <td>
+              <input type="text" id="nameInput" name="nameInput" placeholder="name" />
+            </td>
+            <td>
+              <input type="text" id="surnameInput" name="surnameInput" placeholder="surname" />
+            </td>
+            <td>
+              <input type="text" id="phoneInput" name="phoneInput" placeholder="phone" />
+            </td>
+            <td>
+              <input type="text" id="emailInput" name="emailInput" placeholder="email" />
+            </td>
+            <td><input type="submit" value="Add Contact" /></td>
+          </tr>
+        </tfoot>
+      </table>
+    </form>
+    <script type="text/template" id="contactTemplate">
+      <tr data-contact-id="{{id}}" class="{{class}}">
+          <td>{{name}}</td>
+          <td>{{surname}}</td>
+          <td>{{phone}}</td>
+          <td>{{email}}</td>
+          <td><button type="button">Edit</button></td>
+          <td><button type="button">Delete</button></td>
+      </tr>
+    </script>
+  </body>
+</html>
