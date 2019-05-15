@@ -135,7 +135,7 @@ function updateContact(contact) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(contact)
-    }).then(fetchContacts);
+    });
 }
 
 
