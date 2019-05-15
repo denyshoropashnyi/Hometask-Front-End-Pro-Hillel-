@@ -71,8 +71,8 @@ function onContactsListClick(event) {
     } else if (event.target.classList.contains('btn-save')) {
         saveContact(event.target.parentNode.parentNode);
 
-    } else if (event.target.tagname = 'TD') {
-        togglePopupState(event.target.parentNode);
+    // } else if (event.target.tagname = 'TD') {
+    //     togglePopupState(event.target.parentNode);
     } else {
         toggleContactState(event.target.parentNode.dataset.contactId)
             .then(fetchContacts);
@@ -109,8 +109,8 @@ function saveContact(el) {
     contact.phone = el.children[2].children[0].value;
     contact.email = el.children[3].children[0].value;
 
-    updateContact(contact);
-    fetchContacts();
+    updateContact(contact)
+        .then(fetchContacts);
 }
 
 
