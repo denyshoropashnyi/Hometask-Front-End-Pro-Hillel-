@@ -13,6 +13,7 @@ const contactEmailInput = document.getElementById('emailInput');
 const contactTemplate = document.getElementById('contactTemplate').innerHTML;
 const editContactTemplate = document.getElementById('editContactTemplate').innerHTML;
 
+
 let contacts = [];
 
 
@@ -71,8 +72,8 @@ function onContactsListClick(event) {
     } else if (event.target.classList.contains('btn-save')) {
         saveContact(event.target.parentNode.parentNode);
 
-    // } else if (event.target.tagname = 'TD') {
-    //     togglePopupState(event.target.parentNode);
+        // } else if (event.target.tagname = 'TD') {
+        //     togglePopupState(event.target.parentNode);
     } else {
         toggleContactState(event.target.parentNode.dataset.contactId)
             .then(fetchContacts);
@@ -104,10 +105,15 @@ function saveContact(el) {
 
     let contact = contacts.find((c) => c.id == id);
 
-    contact.name = el.children[0].children[0].value;
-    contact.surname = el.children[1].children[0].value;
-    contact.phone = el.children[2].children[0].value;
-    contact.email = el.children[3].children[0].value;
+    let editedContactName = document.getElementById('editedContactName');
+    let editedContactSurname = document.getElementById('editedContactSurname');
+    let editedContactPhone = document.getElementById('editedContactPhone');
+    let editedContactEmail = document.getElementById('editedContactEmail');
+
+    contact.name = editedContactName.value;
+    contact.surname = editedContactSurname.value;
+    contact.phone = editedContactPhone.value;
+    contact.email = editedContactEmail.value;
 
     updateContact(contact)
         .then(fetchContacts);

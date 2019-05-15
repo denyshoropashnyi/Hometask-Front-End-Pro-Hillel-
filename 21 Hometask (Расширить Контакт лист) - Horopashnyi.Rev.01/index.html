@@ -92,16 +92,16 @@
     <script type="text/template" id="editContactTemplate">
       <tr data-contact-id="{{id}}" class="{{class}}">
         <td>
-          <input type="text" value = {{name}} />
+          <input type="text" id = "editedContactName" value = {{name}} />
         </td>
         <td>
-          <input type="text" value = {{surname}} />
+          <input type="text" id = "editedContactSurname" value = {{surname}} />
         </td>
         <td>
-          <input type="tel" value = {{phone}} />
+          <input type="tel" id = "editedContactPhone" value = {{phone}} />
         </td>
         <td>
-          <input type="email" value = {{email}} />
+          <input type="email" id = "editedContactEmail" value = {{email}} />
         </td>
 
         <td>
