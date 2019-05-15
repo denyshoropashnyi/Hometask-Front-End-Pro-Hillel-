@@ -1,16 +1,13 @@
 * {
-  transition: all 0.5s ease-out;
+  transition: all 0.4s ease-out;
 }
 
-thead {
-  font-size: 22px;
-}
-
-#contactsList {
+#contactsList td {
   cursor: pointer;
+  width: 21%;
 }
 
-#contactsList tr:hover {
+#contactsList td:hover {
   background-color: rgba(77, 222, 222, 0.5);
 }
 
@@ -18,14 +15,10 @@ thead {
   display: none;
 }
 
-
 .showPopup {
   display: block;
-  font-size: 22px;
-  color: black;
-  position: absolute;
-  top: 60px;
+  position: fixed;
+  top: 0px;
   height: 100%;
-  width: 100%;
-  background-color: burlywood;
+  background-color: rgb(131, 129, 127);
 }

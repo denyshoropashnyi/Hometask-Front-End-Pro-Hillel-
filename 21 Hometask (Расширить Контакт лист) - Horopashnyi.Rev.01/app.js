@@ -62,6 +62,7 @@ function newContactFormSubmit(e) {
 
 
 function onContactsListClick(event) {
+    console.log(event.target)
     if (event.target.classList.contains('btn-edit')) {
         editContact(event.target.parentNode.parentNode)
     } else if (event.target.classList.contains('btn-delete')) {
@@ -71,9 +72,8 @@ function onContactsListClick(event) {
         fetchContacts();
     } else if (event.target.classList.contains('btn-save')) {
         saveContact(event.target.parentNode.parentNode);
-
-        // } else if (event.target.tagname = 'TD') {
-        //     togglePopupState(event.target.parentNode);
+    } else if (event.target.classList.contains('contactTemplate-td')) {
+        togglePopupState(event.target.parentNode);
     } else {
         toggleContactState(event.target.parentNode.dataset.contactId)
             .then(fetchContacts);
