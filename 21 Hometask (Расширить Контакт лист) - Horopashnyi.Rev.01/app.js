@@ -37,7 +37,7 @@ function fetchContacts() {
 
 
 function setContacts(data) {
-    return contacts = data
+    return contacts = data;
 }
 
 
@@ -82,7 +82,7 @@ function onContactsListClick(event) {
 
 
 function togglePopupState(el) {
-    el.classList.toggle('showPopup')
+    el.classList.toggle('showPopup');
 }
 
 
@@ -96,7 +96,7 @@ function editContact(el) {
         .replace('{{surname}}', contact.surname)
         .replace('{{phone}}', contact.phone)
         .replace('{{email}}', contact.email)
-        .replace('{{state}}', contact.is_active)
+        .replace('{{state}}', contact.is_active);
 }
 
 
