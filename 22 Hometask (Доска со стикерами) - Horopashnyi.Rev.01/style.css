@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+  transition: all 0.5s ease-out;
+}
+
+input,
+textarea,
+#createButton,
+label {
+  cursor: pointer;
+}
+
+input:hover,
+textarea:hover,
+#createButton:hover {
+  background-color: rgba(211, 211, 211, 0.44);
+}
+
+thead {
+  text-align: center;
+  text-decoration: underline;
+  font-style: oblique;
+}
+
+#blackboardTable { 
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#blackboardTableHead, #blackboardTableBody {
+  flex: 1 0 auto;
+}
+
+#blackboardTableFoot {
+  flex: 0 0 auto;
+}
+
+#blackboardTableHead th {
+  font-size: 22px;
+  text-align: center;
+}
+
+#blackboardTableBody td,
+#blackboardTableFoot td {
+  text-align: center;
+}
+
+.pop {
+  display: block;
+  position: fixed;
+  top: 0px;
+  height: 100vh;
+  width: 100vw;
+  background-color: pink;
+
+}
