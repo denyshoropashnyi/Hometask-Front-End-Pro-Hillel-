@@ -10,6 +10,10 @@ label {
   cursor: pointer;
 }
 
+#modalStickersTemplateTextarea {
+  width: 100%;
+}
+
 #createStickerButton:hover,
 input:hover,
 textarea:hover {
@@ -19,6 +23,11 @@ textarea:hover {
 
 #modalStickersTable {
   margin: 0 auto;
+}
+
+#modalStickersTemplate {
+  display: flex;
+  flex-direction: row;
 }
 
 .cancelBtn {
@@ -45,6 +54,7 @@ thead {
   text-align: center;
   text-decoration: underline;
   font-style: oblique;
+  width: 100%;
 }
 
 #blackboardTable {
@@ -56,15 +66,18 @@ thead {
 
 #blackboardTableHead {
   flex: 1 0 auto;
+  width: 100%;
 }
 
 #blackboardTableHead th {
   font-size: 22px;
   text-align: center;
+  width: 500px;
 }
 
 #blackboardTableFoot {
   flex: 0 0 auto;
+  width: 100%;
 }
 
 #blackboardTableBody td,
