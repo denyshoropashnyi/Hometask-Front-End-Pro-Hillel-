@@ -24,14 +24,14 @@ function fetchContacts(){
     return fetch(URL)
             .then((response) => response.json())
             .then(setContacts)
-            .then(rendeContacts);
+            .then(renderContacts);
 }
 
 function setContacts(data){
     return contacts = data
 }
 
-function rendeContacts(data){
+function renderContacts(data){
     contactsList.innerHTML = data.map((contact) => {
         return contactTemplate
             .replace('{{id}}', contact.id)
