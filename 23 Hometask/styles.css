@@ -1,0 +1,29 @@
+.table-footer{
+    text-align: center;
+}
+
+.contact-row{
+    cursor: pointer;
+}
+
+.active{
+    background-color: bisque
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.modal .modal-content{
+    position: relative;
+    top: 200px;
+    background-color: grey;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 0 auto;
+    width: 400px;
+}
