@@ -1,29 +1,45 @@
 import $ from 'jquery';
 
-export default class TodoView{
-    constructor(elId){
-        this.$el = $(elId);
-
-        this.onElementClick = this.onElementClick.bind(this);
-
-        this.$el.on('click', 'li', this.onElementClick);
+export default class ToDoView {
+    constructor(elId) {
+        this.$el = $(elId)
+        this.$el.on('click', 'li', ((ev) => this.onElementClick(ev)))
+        this.$el.on('click', '.btnDel', ((ev) => this.onBtnDelClick(ev)))
     }
-
-    onElementClick(event){
-        const id = $(event.target).data('id');
-        console.log(id, $(this))
-        this.onClick(id);
-    }
-
-    render(data){
+    render(data) {
         this.$el.html(
-            `<ul>
-            ${data.map(this.renderItem).join('\n')}
-            </ul>`
+            `<table>
+                <thead>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    ${data.map(this.renderItem).join('\n')}
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>`
         )
     }
-
-    renderItem(el){
-        return `<li data-id="${el.id}">${el.name}</li>`;
+    renderItem(el) {
+        return `<tr data-id="${el.id}">
+                    <td>${el.name}</td>
+                    <td>${el.phone}</td>
+                    <td>${el.email}</td>
+                    <td><button class="btnDel">Del</button></td>
+                </tr>`
     }
-}   
+    onElementClick(ev) {
+        const id = $(ev.target).data('id')
+
+        this.onClick(id);
+        console.log('hurrah');
+    }
+    onBtnDelClick(ev) {
+        const id = $(ev.target).parents('tr').data('id');
+
+        this.onContactBtnDelClick(id);
+    }
+}

@@ -1,37 +1,46 @@
-let urlWeakMap = new WeakMap;
+let url = new WeakMap
 
-export default class ToDoModel{
-    get url(){
-        return urlWeakMap.get(this);
+export default class ToDoModel {
+
+    get url() {
+        return url.get(this);
     }
 
-    set url(val){
-        urlWeakMap.set(this, val);
+    set url(val) {
+        url.set(this, val);
     }
 
-    constructor(collectionUrl, data){
-        this.url = collectionUrl;
+    constructor(url, data) {
+        this.url = url;
         Object.assign(this, data);
 
-        // console.log('model constructor', this.url);
+        console.log('model constructor', this.url)
     }
-
-    save(){
-        if (this.id){
+    save() {
+        if (this.id) {
             this.update();
-        } else{
+        } else {
             // this.create();
         }
     }
-
-    update(){
-        fetch(`${this.url}/${this.id}`, {
-                method: "PUT",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(this)
+    update() {
+        fetch(this.url + '/' + this.id, {
+            method: "PUT",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this)
+        })
+    }
+    deleted() {
+        console.log('deleted')
+        fetch(this.url + '/' + this.id, {
+            method: "delete",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
         })
     }
 }

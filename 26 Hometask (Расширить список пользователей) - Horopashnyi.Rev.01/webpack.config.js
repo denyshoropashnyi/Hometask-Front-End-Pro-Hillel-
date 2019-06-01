@@ -1,13 +1,13 @@
-const path = require('path');
+var path = require('path');
 
 module.exports = {
-  entry: './src/scripts/app.js',
   mode: 'development',
+  entry: './src/scripts/app.js',
   output: {
-    filename: 'app.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'app.js'
   },
   devServer: {
-    contentBase: './dist'
-  },
+    content: './dist'
+  }
 };

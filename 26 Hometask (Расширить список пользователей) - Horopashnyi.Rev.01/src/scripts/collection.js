@@ -5,24 +5,18 @@ export default class ToDoCollection{
         this.url = url;
         this.list = [];
 
-        this.setData = this.setData.bind(this);
-
-        console.log('collection', url);
+        console.log('collection',url);
     }
-
     fetch(){
         return fetch(this.url)
-                .then((response => response.json()))
-                .then(this.setData)
+               .then(responce => responce.json())
+               .then((data) => this.setData(data))
     }
-
     setData(list){
-        return this.list = list.map(el => new ToDoModel(this.url, el));
-        console.log(this.list);
+       return this.list = list.map(el => new ToDoModel(this.url, el));
+        console.log(this.list)
     }
-
     get(id){
-        console.log(this.list, id)
-        return this.list.find(el => el.id == id);
+        return this.list.find( el => el.id == id);
     }
 }
