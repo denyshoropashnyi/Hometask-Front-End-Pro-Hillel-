@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 28</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="app.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <canvas id="myField" alt="field" width="500" height="500"></canvas>
+
+        <div id="legend">
+            <p class="legend--title">legend</p>
+
+            <div class="ballRange--wrapper">
+                <label for="ballColorRange">Ball Radius</label>
+                <span>10px</span>
+                <input type="range" list="rangemarks" id="ballRange" min="10" max="100" value="10" step="5">
+                <datalist id="rangemarks">
+                    <option value="0">
+                    <option value="10">
+                    <option value="20">
+                    <option value="30">
+                    <option value="40">
+                    <option value="50">
+                    <option value="60">
+                    <option value="70">
+                    <option value="80">
+                    <option value="90">
+                    <option value="100">
+                </datalist>
+                <span>100px</span>
+            </div>
+
+            <div class="colorpicker--wrapper">
+                <label for="ballColoricker">Ball Color</label>
+                <input type="color" id="ballColoricker" placeholder="Change color">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
