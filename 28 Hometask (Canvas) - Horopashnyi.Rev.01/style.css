@@ -1,0 +1,42 @@
+* {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+#myField {
+  border: 1px solid;
+  margin-right: 50px;
+}
+
+#legend .legend--title {
+  font-size: 22px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+#legend .ballRange--wrapper,
+#legend .colorpicker--wrapper {
+  margin: 10px 0;
+}
+
+#legend .ballRange--wrapper label,
+#legend .colorpicker--wrapper label {
+  font-size: 18px;
+  margin: 0 25px;
+}
+
+#ballRange {
+  cursor: grab;
+}
+
+#ballColoricker {
+  width: 220px;
+  cursor: pointer;
+}
