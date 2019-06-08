@@ -22,7 +22,7 @@ function init() {
     drawBall();
     animateAlongAxisX();
     bindEventListeners();
-}
+};
 
 
 function drawField() {
@@ -31,7 +31,7 @@ function drawField() {
     } else {
         alert('canvas-unsupported code here');
     }
-}
+};
 
 function drawBall() {
     if (myField.getContext) {
@@ -48,28 +48,28 @@ function drawBall() {
     } else {
         alert('canvas-unsupported code here');
     }
-}
+};
 
 
 function onInputChange() {
     ballRadiusRange.addEventListener('change', changeBallRadius);
     ballColorPicker.addEventListener('change', changeBallColor);
-}
+};
 
 function changeBallRadius() {
     ballRadius = ballRadiusRange.value;
     drawBall();
-}
+};
 
 function changeBallColor() {
     ballColor = ballColorPicker.value;
     drawBall();
-}
+};
 
 
 function bindEventListeners() {
     document.body.addEventListener('keyup', (e) => onBoardEvent(e));
-}
+};
 
 function onBoardEvent(event) {
     switch (event.code) {
@@ -86,7 +86,7 @@ function onBoardEvent(event) {
             animateAlongAxisX();
             break;
     }
-}
+};
 
 function reverseAnimateAlongAxisY() {
     setTimeout(function () {
@@ -102,7 +102,7 @@ function reverseAnimateAlongAxisY() {
 
 function animateAlongAxisY() {
     setTimeout(function () {
-        if (((y + ballRadius / 2)) < 500) {
+        if (((y + 1 + ballRadius / 1.01)) < 500) {
             y += 1,
                 drawBall(),
                 animateAlongAxisY();
@@ -126,7 +126,7 @@ function reverseAnimateAlongAxisX() {
 
 function animateAlongAxisX() {
     setTimeout(function () {
-        if ((x + 1 + ballRadius / 2) < 500) {
+        if ((x + 1 + ballRadius / 1.01) < 500) {
             x += 1,
                 drawBall(),
                 animateAlongAxisX();
