@@ -9,19 +9,17 @@ const ballColorPicker = document.getElementById('ballColoricker');
 let ballRadius = ballRadiusRange.value;
 let ballColor = ballColorPicker.value;
 
-let x = 250;
-let y = 250;
+let x = 20;
+let y = 20;
 
 
 init();
 
 
 function init() {
-    // window.addEventListener("load", drawField);
-    drawField();
+    // window.addEventListener("load", drawField); // nevermind - delete
     onInputChange();
-
-    // onBoardEvent();
+    // onBoardEvent(); // nevermind - delete
     animateXLeft();
     animateXRight();
     animateYTop();
@@ -92,9 +90,6 @@ function animateYDown() {
     drawBall();
 }
 
-function animate(x, y) {
-    drawBall();
-}
 
 function bindEventListeners() {
     document.body.addEventListener('keyup', (e) => onBoardEvent(e));
@@ -103,33 +98,21 @@ function bindEventListeners() {
 function onBoardEvent(event) {
     switch (event.code) {
         case 'ArrowUp':
-            // clearInterval(timerID);
-            // animateYTop();
-            // setInterval(animateYTop, 1000);
+            setInterval(animateYTop, 1000);
             break;
         case 'ArrowDown':
-            // clearInterval(timerID);
-            // animateYDown();
             setInterval(animateYDown, 1000);
             break;
         case 'ArrowLeft':
-            // clearInterval(timerID);
-            // animateXLeft();
-            // setInterval(animateXLeft, 1000);
+            setInterval(animateXLeft, 1000);
             break;
         case 'ArrowRight':
-            clearInterval();
-            // animateXRight();
             setInterval(animateXRight, 1000);
             break;
     }
 }
 
-let timerID = setInterval(animateYDown(), 200);
-
-// let timerID = setInterval(animateXRight, 500);
-
-// let timerID = setTimeout(animateXRight {timerID animateXRight, 500}, 500);
+let timerID = setInterval(animateYDown, 1000);
 
 
 
