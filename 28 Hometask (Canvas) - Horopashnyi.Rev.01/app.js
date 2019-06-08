@@ -76,7 +76,7 @@ function animateXLeft() {
 }
 
 function animateXRight() {
-    x += 10;
+    x += 100;
     drawBall();
 }
 
@@ -86,7 +86,7 @@ function animateYTop() {
 }
 
 function animateYDown() {
-    y += 10;
+    y += 100;
     drawBall();
 }
 
@@ -95,24 +95,81 @@ function bindEventListeners() {
     document.body.addEventListener('keyup', (e) => onBoardEvent(e));
 }
 
+function animateAlongAxisY() {
+    setTimeout(function () {
+        if ((y += 1) < 500) {
+            // console.log(y),
+            drawBall(),
+                animateAlongAxisY();
+        } else {
+            reverseAnimateAlongAxisY();
+        }
+    }, 10);
+};
+
+function reverseAnimateAlongAxisY() {
+    setTimeout(function () {
+        if ((y -= 1) > 0) {
+            // console.log(y),
+            drawBall(),
+                reverseAnimateAlongAxisY();
+        } else {
+            animateAlongAxisY();
+        }
+    }, 10);
+};
+
+function animateAlongAxisX() {
+    setTimeout(function () {
+        if ((x += 1) < 500) {
+            // console.log(y),
+            drawBall(),
+                animateAlongAxisX();
+        } else {
+            reverseAnimateAlongAxisX();
+        }
+    }, 10);
+};
+
+function reverseAnimateAlongAxisX() {
+    setTimeout(function () {
+        if ((x -= 1) > 0) {
+            // console.log(y),
+            drawBall(),
+                reverseAnimateAlongAxisX();
+        } else {
+            animateAlongAxisX();
+        }
+    }, 10);
+};
+
+
 function onBoardEvent(event) {
+    // const dir;
     switch (event.code) {
         case 'ArrowUp':
-            setInterval(animateYTop, 1000);
+            reverseAnimateAlongAxisY();
+            // setInterval(animateYTop, 1000);
             break;
         case 'ArrowDown':
-            setInterval(animateYDown, 1000);
+            animateAlongAxisY();
+            // setTimeout(animateYDown, 1000);
             break;
         case 'ArrowLeft':
-            setInterval(animateXLeft, 1000);
+            reverseAnimateAlongAxisX();
+            // setInterval(animateXLeft, 1000);
             break;
         case 'ArrowRight':
-            setInterval(animateXRight, 1000);
+            animateAlongAxisX();
+            // setInterval(animateXRight, 1000);
             break;
     }
+    // const move;
 }
 
-let timerID = setInterval(animateYDown, 1000);
+// let timerID = setInterval(animateYDown, 1000);
+
+// const 
 
 
 
@@ -290,3 +347,18 @@ let timerID = setInterval(animateYDown, 1000);
 // // let timerID = setInterval(animateXRight, 500);
 
 // // let timerID = setTimeout(animateXRight {timerID animateXRight, 500}, 500);
+
+
+
+// (function loops() {
+//     setTimeout(function () {
+//         if ((y += 50) < 400) {
+//             console.log(y),
+//                 drawBall(),
+//                 loops();
+//         } else {
+//             animateYTop();
+
+//         }
+//     }, 200);
+// })();
