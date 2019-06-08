@@ -9,8 +9,8 @@ const ballColorPicker = document.getElementById('ballColoricker');
 let ballRadius = ballRadiusRange.value;
 let ballColor = ballColorPicker.value;
 
-let x = 0;
-let y = 0;
+let x = 50;
+let y = 50;
 
 
 init();
@@ -20,10 +20,11 @@ function init() {
     // window.addEventListener("load", drawField);
     onInputChange();
     drawField();
-    // onBoardEvent();
-    animateX();
+    animateXLeft();
+    animateXRight();
     animateY();
     bindEventListeners();
+    // onBoardEvent();
 }
 
 
@@ -32,13 +33,13 @@ function drawField() {
         ctx.fillStyle = "#45E31C";
         ctx.fillRect(0, 0, myField.width, myField.height);
 
-        // let circle = new Path2D();
-        // ctx.beginPath();
-        // circle.arc(10, 10, ballRadius, 0, 2 * Math.PI);
-        // ctx.fillStyle = ballColor;
-        // ctx.fill(circle);
-        // ctx.strokeStyle = "gold";
-        // ctx.stroke(circle);
+        let circle = new Path2D();
+        ctx.beginPath();
+        circle.arc(10, 10, ballRadius, 0, 2 * Math.PI);
+        ctx.fillStyle = ballColor;
+        ctx.fill(circle);
+        ctx.strokeStyle = "gold";
+        ctx.stroke(circle);
     } else {
         alert('canvas-unsupported code here');
     }
@@ -60,12 +61,13 @@ function changeBallColor() {
     drawField();
 }
 
-function animateX() {
-    x += 1;
+
+function animateXLeft() {
+    x -= 10;
     ctx.clearRect(0, 0, myField.width, myField.height);
     let circle = new Path2D();
     ctx.beginPath();
-    circle.arc(x, 10, ballRadius, 0, 2 * Math.PI);
+    circle.arc(x, y, ballRadius, 0, 2 * Math.PI);
     ctx.fillStyle = ballColor;
     ctx.fill(circle);
     ctx.strokeStyle = "gold";
@@ -73,12 +75,27 @@ function animateX() {
     ctx.closePath();
 }
 
+function animateXRight() {
+    x += 10;
+    ctx.clearRect(0, 0, myField.width, myField.height);
+    let circle = new Path2D();
+    ctx.save();
+    ctx.beginPath();
+    circle.arc(x, y, ballRadius, 0, 2 * Math.PI);
+    ctx.fillStyle = ballColor;
+    ctx.fill(circle);
+    ctx.strokeStyle = "gold";
+    ctx.stroke(circle);
+    ctx.closePath();
+    ctx.restore();
+}
+
 function animateY() {
-    y += 1;
+    y += 10;
     ctx.clearRect(0, 0, myField.width, myField.height);
     let circle = new Path2D();
     ctx.beginPath();
-    circle.arc(10, y, ballRadius, 0, 2 * Math.PI);
+    circle.arc(x, y, ballRadius, 0, 2 * Math.PI);
     ctx.fillStyle = ballColor;
     ctx.fill(circle);
     ctx.strokeStyle = "gold";
@@ -87,26 +104,29 @@ function animateY() {
 }
 
 function bindEventListeners() {
-    document.body.addEventListener('keyup', (e) => onBoardEvent(e));
+    document.body.addEventListener('keyup', onBoardEvent);
 }
 
-// function onBoardEvent(event) {
-//     console.dir(event);
-//     switch (KeyboardEvent.code) {
-//         case 'ArrowUp':
-//             animateY;
-//             setInterval(animateY, 100);
-//             break;
-//         case 'ArrowDown':
-//             animateY;
-//             break;
-//         case 'ArrowLeft':
-//             animateX;
-//             break;
-//         case 'ArrowRight':
-//             animateX;
-//             break;
-//     }
-// }
+function onBoardEvent(event) {
+    console.log(event.code);
+    switch (event.code) {
+        case 'ArrowUp':
+            animateY(y += 10);
+            setInterval(animateY, 1000);
+            break;
+        case 'ArrowDown':
+            animateY(y -= 10);
+            setInterval(animateY, 1000);
+            break;
+        case 'ArrowLeft':
+            animateXLeft();
+            setInterval(animateXLeft, 1000);
+            break;
+        case 'ArrowRight':
+            animateXRight();
+            setInterval(animateXRight, 1000);
+            break;
+    }
+}
 
-setInterval(animateX, 100);
+// setInterval(animateXRight, 100);
